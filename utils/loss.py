@@ -32,10 +32,16 @@ class RetrievalLoss():
         num = self.features.shape[0]
         feature_num = self.features.shape[1]
         label = self.label.unsqueeze(0).float()
-        w_label = 2 * torch.chain_matmul(torch.t(label), label) - 1
+        label = F.one_hot(label, num_classes=8).float()
+        w_label = 2 * torch.chain_matmul(label, torch.t(label)) - 1
         Y = torch.chain_matmul(self.features, torch.t(self.features)) / feature_num - w_label
         rhl = torch.sum(torch.abs(torch.abs(self.features) - 1)) / num / feature_num
-        loss = torch.sum(Y * Y / num / (num - 1)) + 0.3 * rhl
+
+        if num == 1:
+            loss = torch.sum(Y * Y / num / (num)) + 0.3 * rhl
+        else:
+            loss = torch.sum(Y * Y / num / (num - 1)) + 0.3 * rhl
+
         return loss
 
     def hash_loss_func(self):
@@ -131,10 +137,16 @@ class RetrievalLoss_WO_DCL():
         num = self.features.shape[0]
         feature_num = self.features.shape[1]
         label = self.label.unsqueeze(0).float()
-        w_label = 2 * torch.chain_matmul(torch.t(label), label) - 1
+        label = F.one_hot(label, num_classes=8).float()
+        w_label = 2 * torch.chain_matmul(label, torch.t(label)) - 1
         Y = torch.chain_matmul(self.features, torch.t(self.features)) / feature_num - w_label
         rhl = torch.sum(torch.abs(torch.abs(self.features) - 1)) / num / feature_num
-        loss = torch.sum(Y * Y / num / (num - 1)) + 0.3 * rhl
+
+        if num == 1:
+            loss = torch.sum(Y * Y / num / (num)) + 0.3 * rhl
+        else:
+            loss = torch.sum(Y * Y / num / (num - 1)) + 0.3 * rhl
+
         return loss
 
     def hash_loss_func(self):
