@@ -71,13 +71,15 @@ python -u utils/main.py
 ## Reference
 If the code is helpful to your research, please cite:
 ```
-@inproceedings{zhu2024lwsr,
-    author    = {Xinyu Zhu, Zhiguo Jiang, Kun Wu, Jun Shi, Yushan Zheng},
-    title     = {Lifelong Histopathology Whole Slide Image Retrieval via Distance Consistency Rehearsal},
-    booktitle = {Medical Image Computing and Computer Assisted Intervention 
-                -- MICCAI 2024},
-    pages     = {xxx--xxx},
-    year      = {2024}
+@InProceedings{Zhu_Lifelong_MICCAI2024,
+	author = { Zhu, Xinyu and Jiang, Zhiguo and Wu, Kun and Shi, Jun and Zheng, Yushan},
+	title = { { Lifelong Histopathology Whole Slide Image Retrieval via Distance Consistency Rehearsal } },
+	booktitle = {proceedings of Medical Image Computing and Computer Assisted Intervention -- MICCAI 2024},
+	year = {2024},
+	publisher = {Springer Nature Switzerland},
+	volume = {LNCS 15004},
+	month = {October},
+	page = {274 -- 284}
 }
 ```
 ## Acknowledgements
